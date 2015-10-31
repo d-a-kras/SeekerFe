@@ -1,16 +1,50 @@
 package com.kras.seekerfe;
 
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    //GoogleMap googleMap;
+    mainFragment frag1;
+    //Fragment2 frag2;
+    FragmentTransaction fTrans;
+
+    private void createMapView() {
+        /**
+         * Catch the null pointer exception that
+         * may be thrown when initialising the map
+         */
+        try {
+          //  if (null == googleMap) {
+           //     googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+             //           R.id.mapView)).getMap();
+
+                /**
+                 * If the map is still null after attempted initialisation,
+                 * show an error to the user
+                 */
+              //  if (null == googleMap) {
+                    Toast.makeText(getApplicationContext(),
+                            "Error creating map", Toast.LENGTH_SHORT).show();
+            //    }
+          //  }
+        } catch (NullPointerException exception) {
+            Log.e("mapApp", exception.toString());
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        frag1=new mainFragment();
     }
 
     @Override
@@ -33,5 +67,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void C(View v){
+        fTrans = getFragmentManager().beginTransaction();
+        fTrans.add(R.id.frgmCont, frag1);
+        fTrans.commit();
+        Toast.makeText(this,"edf",Toast.LENGTH_LONG).show();
     }
 }
