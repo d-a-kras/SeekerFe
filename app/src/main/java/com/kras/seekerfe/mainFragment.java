@@ -19,6 +19,6 @@ public class mainFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         Log.d(LOG_TAG, "Fragment2 onCreate");
-        return inflater.inflate(R.layout.layout_fragment, null);
+       return inflater.inflate(R.layout.layout_fragment, null);
     }
 }

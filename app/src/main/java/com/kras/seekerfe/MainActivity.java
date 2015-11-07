@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import com.google.android.gms.maps.*;
 
 public class MainActivity extends AppCompatActivity {
     //GoogleMap googleMap;
@@ -21,19 +22,20 @@ public class MainActivity extends AppCompatActivity {
          * may be thrown when initialising the map
          */
         try {
-          //  if (null == googleMap) {
-           //     googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-             //           R.id.mapView)).getMap();
+
+           // if (null == googleMap) {
+            //   googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+                   //    R.id.mapView)).getMap();
 
                 /**
                  * If the map is still null after attempted initialisation,
                  * show an error to the user
                  */
-              //  if (null == googleMap) {
+             //   if (null == googleMap) {
                     Toast.makeText(getApplicationContext(),
                             "Error creating map", Toast.LENGTH_SHORT).show();
             //    }
-          //  }
+        //    }
         } catch (NullPointerException exception) {
             Log.e("mapApp", exception.toString());
         }
@@ -70,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void C(View v){
         fTrans = getFragmentManager().beginTransaction();
-        fTrans.add(R.id.frgmCont, frag1);
+        fTrans.replace(R.id.frgmCont, frag1);
+        fTrans.addToBackStack(null);
         fTrans.commit();
-        Toast.makeText(this,"edf",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"edf",Toast.LENGTH_SHORT).show();
     }
 }
